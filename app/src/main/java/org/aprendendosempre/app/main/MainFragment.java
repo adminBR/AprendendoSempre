@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import org.aprendendosempre.app.R;
+import org.aprendendosempre.app.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
+    //class controladora do main_fragment, que por sua vez controla os xml internos Content_main e content_botton_sheet
     View bottomSheet;
     BottomSheetBehavior behavior;
 
@@ -76,7 +78,10 @@ public class MainFragment extends Fragment {
 
         btn_home.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://aprendendosempre.org/")));
+                //startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://aprendendosempre.org/")));
+                Intent intent = new Intent(requireContext(), WebViewActivity.class);
+                intent.putExtra("Link", "https://aprendendosempre.org/");
+                requireContext().startActivity(intent);
             }
         });
 
@@ -122,6 +127,7 @@ public class MainFragment extends Fragment {
         Site site6 = new Site(getString(R.string.khanacadem), R.mipmap.khan_academy, "https://pt.khanacademy.org/");
         Site site7 = new Site(getString(R.string.kinedu____), R.mipmap.kinedu, "https://kinedu.com/");
         Site site8 = new Site(getString(R.string.novaescola), R.mipmap.nova_escola, "https://novaescola.org.br/");
+        Site site9 = new Site(getString(R.string.smed), R.mipmap.logo_pmvc, "http://smed.pmvc.ba.gov.br/estudoremoto/");
 
 
         List<Site> list = new ArrayList<>(10);
@@ -134,6 +140,7 @@ public class MainFragment extends Fragment {
         list.add(6, site6);
         list.add(7, site7);
         list.add(8, site8);
+        list.add(9, site9);
 
         return list;
     }

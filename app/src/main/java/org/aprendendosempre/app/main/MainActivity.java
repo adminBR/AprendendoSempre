@@ -14,15 +14,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.aprendendosempre.app.AboutFragment;
 import org.aprendendosempre.app.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
+        /*try {
             super.onCreate(savedInstanceState);
-            String mySdkKey = getString(R.string.SDK_KEY); //Use the SDK API access key given by Datami.
+           // String mySdkKey = getString(R.string.SDK_KEY); //Use the SDK API access key given by Datami.
+            String mySdkKey = getString(0); //Use the SDK API access key given by Datami.
             String myUserId = "";
             int sdIconId = R.drawable.ic_launcher_foreground;
 
@@ -42,8 +46,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         } catch (Exception e) {
 
-            Toast.makeText(this, "Error :" + e , Toast.LENGTH_SHORT).show();
-        }
+            Toast.makeText(this, "Error :" + e , Toast.LENGTH_LONG).show();
+        }*/
+
+        //temp
+        super.onCreate(savedInstanceState);
+
+
+        setContentView(R.layout.main_activity);
+
+
+        loadFragment(new MainFragment());
+
+        BottomNavigationView navigationView = findViewById(R.id.bottom_navigation);
+        navigationView.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
