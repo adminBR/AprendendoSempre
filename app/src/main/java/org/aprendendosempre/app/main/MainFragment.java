@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
+import org.aprendendosempre.app.LoginActivity;
 import org.aprendendosempre.app.R;
 import org.aprendendosempre.app.WebViewActivity;
 
@@ -118,7 +119,20 @@ public class MainFragment extends Fragment {
     }
 
     private List<Site> setupList(){
-        Site site = new Site(getString(R.string.aprendendo), R.mipmap.aprendendo_sempre_logo, "https://aprendendosempre.org/");
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String key = "1";
+        if(bundle.getString("Chave")!= null)
+        {
+            key = ""+bundle.getString("Chave");
+            Toast toast = Toast.makeText(getContext(),"k "+bundle.getString("Chave"),Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        List<Site> list = new ArrayList<>();
+        list.add(new Site("Artes", R.mipmap.logo_pmvc, "http://smed.pmvc.ba.gov.br/estudoremoto/conteudo.jsp?idSerie="+key+"&idDisciplina=1"));
+        list.add(new Site("Língua Portuguesa", R.mipmap.logo_pmvc, "http://smed.pmvc.ba.gov.br/estudoremoto/conteudo.jsp?idSerie="+key+"&idDisciplina=2"));
+        list.add(new Site("Matemática", R.mipmap.logo_pmvc, "http://smed.pmvc.ba.gov.br/estudoremoto/conteudo.jsp?idSerie="+key+"&idDisciplina=3"));
+        /*Site site = new Site(getString(R.string.aprendendo), R.mipmap.aprendendo_sempre_logo, "https://aprendendosempre.org/");
         Site site1 = new Site(getString(R.string.aprendizap), R.mipmap.aprendizap_logo, "https://www.aprendizap.com.br/");
         Site site2 = new Site(getString(R.string.arvoveredu), R.mipmap.arvore_de_livros, "https://app.arvoreeducacao.com.br/");
         Site site3 = new Site(getString(R.string.avamec____), R.mipmap.avamec, "http://avamec.mec.gov.br/#/");
@@ -140,7 +154,7 @@ public class MainFragment extends Fragment {
         list.add(6, site6);
         list.add(7, site7);
         list.add(8, site8);
-        list.add(9, site9);
+        list.add(9, site9);*/
 
         return list;
     }
